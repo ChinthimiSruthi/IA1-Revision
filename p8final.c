@@ -40,7 +40,7 @@ Complex add_n_complex(int n, Complex c[n])
   Complex c1;
   c1.real=0;
   c1.imaginary=0;
-  for(i=1;i<=n;i++)
+  for(i=0;i<=n;i++)
   {
     c1=add(c1,c[i]);
   }
