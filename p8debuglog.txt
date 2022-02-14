@@ -1,0 +1,107 @@
+Reading symbols from a.out...
+(gdb) run
+Starting program: /home/a.out 
+
+Breakpoint 1, main () at main.c:56
+56      {
+(gdb) step
+58        Complex c[n],result;
+(gdb) step
+59        n=get_n();
+(gdb) step
+get_n () at main.c:9
+9       {
+(gdb) step
+11        printf("Enter a number\n");
+(gdb) next
+Enter a number
+12        scanf("%d",&a);
+(gdb) next
+2
+13        return a;
+(gdb) next
+14      }
+(gdb) p a
+$1 = 2
+(gdb) next
+main () at main.c:60
+60        input_n_complex(n,c);
+(gdb) step
+input_n_complex (n=32767, c=0x5555555550c0 <_start>) at main.c:23
+23      {
+(gdb) step
+25        for(i=0;i<n;i++)
+(gdb) next
+27          c[i]=input_complex();
+(gdb) next
+Enter complex number
+2
+3
+25        for(i=0;i<n;i++)
+(gdb) next
+27          c[i]=input_complex();
+(gdb) next
+Enter complex number
+4 
+5
+25        for(i=0;i<n;i++)
+(gdb) next
+29      }
+(gdb) next
+main () at main.c:61
+61        result=add_n_complex(n,c);
+(gdb) step
+add_n_complex (n=2, c=0x0) at main.c:38
+38      {
+(gdb) step
+41        c1.real=0;
+(gdb) next
+42        c1.imaginary=0;
+(gdb) next
+43        for(i=0;i<=n;i++)
+(gdb) next
+45          c1=add(c1,c[i]);
+(gdb) next
+43        for(i=0;i<=n;i++)
+(gdb) next
+45          c1=add(c1,c[i]);
+(gdb) next
+43        for(i=0;i<=n;i++)
+(gdb) next
+45          c1=add(c1,c[i]);
+(gdb) next
+43        for(i=0;i<=n;i++)
+(gdb) next
+47      }
+(gdb) next
+main () at main.c:62
+62        output(n,c,result);
+(gdb) step
+output (n=2, c=0x7ffffffd40f0, result=...) at main.c:49
+49      {
+(gdb) next
+51        for(i=0;i<n;i++)
+(gdb) next
+52        printf("%f + %fi\n",c[i].real,c[i].imaginary);
+(gdb) next
+2.000000 + 3.000000i
+51        for(i=0;i<n;i++)
+(gdb) next
+52        printf("%f + %fi\n",c[i].real,c[i].imaginary);
+(gdb) next
+4.000000 + 5.000000i
+51        for(i=0;i<n;i++)
+(gdb) next
+53        printf("%f + %fi is %f + %fi\n",c[n-1].real,c[n-1].imaginary,result.real,result.imaginary);
+(gdb) next
+4.000000 + 5.000000i is 6.000000 + 8.000000i
+54      }
+(gdb) next
+main () at main.c:63
+63        return 0;
+(gdb) next
+64      }
+(gdb) cont
+Continuing.
+[Inferior 1 (process 731) exited normally]
+(gdb) 
